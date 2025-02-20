@@ -3,6 +3,8 @@ import { getPosts } from "../../API/PostAPI";
 import { PostType } from "../../Types/PostType";
 import Styles from "./PostList.module.css";
 import { CommentType } from "../../Types/CommentType";
+import { RemovePost } from "../RemovePost";
+import { UpdatePost } from "../UpdatePost";
 
 export const PostList = () => {
 	const [data, setData] = useState<PostType[]>([]);
@@ -25,7 +27,7 @@ export const PostList = () => {
 		<>
 			{data &&
 				data.map((post: PostType) => (
-					<div key={post.PostID} className={Styles.postList}>
+					<div key={post.postID} className={Styles.postList}>
 						<h2>{post.title}</h2>
 						<p>{post.postBody}</p>
 						<div>
@@ -34,6 +36,8 @@ export const PostList = () => {
 								<p key={comment.commentID}>{comment.commentBody}</p>
 							))}
 						</div>
+						<UpdatePost post={post} />
+						<RemovePost id={post.postID} />
 					</div>
 				))}
 		</>

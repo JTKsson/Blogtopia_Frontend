@@ -1,10 +1,10 @@
 import { CommentType } from "./CommentType";
 
 export interface PostType {
-	PostID: number;
+	postID: number;
 	title: string;
 	postBody: string;
-	categoryId: number;
+	categoryID: number;
 	userId: number;
 	comments: CommentType[];
 }
